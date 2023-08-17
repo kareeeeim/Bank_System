@@ -1,17 +1,18 @@
 class User:
-    def __init__(self , name , age,email,phone) :
-        self.name=name
+    def __init__(self , Fname ,Lname, age,address,phone) :
+        self.Fname=Fname
+        self.Lname=Lname
         self.age=age
-        self.email=email
+        self.address=address
         self.phone=phone
 class Bank(User):
     total_deposit=0
     total_withdraws=0
-    def __init__(self, name, age,email,phone,balance):
-        super().__init__(name, age,email,phone)       
+    def __init__(self, Fname,Lname,age,address,phone,balance):
+        super().__init__(Fname,Lname,age,address,phone)       
         self.balance=balance
     def show_Info(self):
-        return f" dear MR|MIS {self.name}\n your email is :{self.email}\n your phone is :{self.phone}\nhas a remaining balance of E {round(self.balance,2)}"
+        return f" dear {self.Fname}\nyour age is :{self.age}\nyour Address is :{self.address}\nyour phone is :{self.phone}\nyour balance =E {round(self.balance,2)}"
     def deposit(self):
         dp=float(input(f"{self.name.title()},Plz enter How much would u like to Deposit = " ))  
         print('Thank U for depositing....')
@@ -56,35 +57,37 @@ def Options(User_2):
             print('Thank U For Using E Bank')
             return False
             break;
-def Bank_creation(name):
-    balance=float(input(f"{name.title()} ,how much money U have?\n= "))
+def Bank_creation(Fname):
+    balance=float(input(f"{Fname.title()} ,how much money U have?\n= "))
     return balance
                  
 while True:
         print('Welcome in E Bank')
-        name=input('Plz enter your name : ')
+        Fname=input('Plz enter your First name : ')
+        Lname=input('Plz enter your Last  name : ')
         age=int(input('Enter your age : '))
-        email=input("Plz enter Your Email : ")
+        address=input("Plz enter Your Address : ")
         phone=input('Plz enter Your Phone : ')  
-        User_1=User(name,age,email,phone)
+        User_1=User(Fname,Lname,age,address,phone)
         User_2=None
         new_user=input("if U want to create a new account Type 'Yes'\n:")
         if new_user.lower()=='Yes':
-            name=input('Plz enter your name : ')
+            Fname=input('Plz enter your First name : ')
+            Lname=input('Plz enter your Last  name : ')
             age=int(input('Enter your age : '))
-            email=input("Plz enter Your Email : ")
+            address=input("Plz enter Your Address : ")
             phone=input('Plz enter Your Phone : ')  
-            User_2=User(name,age,email,phone)
+            User_2=User(Fname,Lname,age,address,phone)
             print('Thank U for registration ')
-            user_1_balance=Bank_creation(User_1.name)
-            user_2_balance=Bank_creation(User_2.name)
-            user_1_bank=Bank(User_1.name,User_1.age,user_1_balance)
-            user_2_bank=Bank(User_2.name,User_2.age,user_2_balance)
+            user_1_balance=Bank_creation(User_1.Fname)
+            user_2_balance=Bank_creation(User_2.Fname)
+            user_1_bank=Bank(User_1.Fname,User_1.age,user_1_balance)
+            user_2_bank=Bank(User_2.Fname,User_2.age,user_2_balance)
             flag=Options(User_2)       
             if flag == False: break;
         else:
-            user_1_balance=Bank_creation(User_1.name)
-            user_1_bank=Bank(User_1.name,User_1.age,User_1.email,User_1.phone,user_1_balance)
+            user_1_balance=Bank_creation(User_1.Fname)
+            user_1_bank=Bank(User_1.Fname,User_1.Lname,User_1.age,User_1.address,User_1.phone,user_1_balance)
             flag=Options(User_1)    
             if flag == False : break;
                   
