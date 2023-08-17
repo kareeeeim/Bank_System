@@ -29,7 +29,7 @@ class Bank(User):
             return f"{self.name.title()}, your balance now = {round(self.balance,2)}"
 def Options(User_2):    
     while True:
-        opt_choice=int(input('\nChoice Your Operation\n1- See Balance\n2- Withdraw\n3- Deposit\n4- Total Withdraw\n5- Total Deposit\n6- Quit\n'))
+        opt_choice=int(input('\nChoice Your Operation\n1- See Balance\n2- Withdraw\n3- Deposit\n4- Total Withdraw\n5- Total Deposit\n6- Quit\n:'))
         if opt_choice==1:
            print(user_1_bank.show_Info) 
            if opt_choice==1 and User_2 !=None:
@@ -37,15 +37,14 @@ def Options(User_2):
         elif opt_choice==2:
             ww=input(f'{User_1.name} would U like to Withdraw (Yes - No)\n: ')
             if ww.lower() == 'Yes' :
-                print(user_1_bank.withdraws())
-            if opt_choice==2 and User_2 !=None:
-                print(user_1_bank.withdraws())
+                print(user_1_bank.withdraws()) 
+            if ww.lower()=='No':print(Options(User_2));        
         elif opt_choice ==3:
             dd=input(f'{User_1.name} would U like to Deposit (Yes - No)\n:' )
             if dd.lower()=='Yes':
                     print(user_1_bank.deposit())
-            if opt_choice==3 and User_2 !=None:
-                   print(user_1_bank.deposit())                           
+            if dd.lower()=='No':
+                    print(Options(User_2))        
         elif opt_choice==4:
             if opt_choice==4 and User_2 !=None:
                  print(f"There Have been {user_1_bank.total_withdraws} Withdraws")
@@ -57,8 +56,6 @@ def Options(User_2):
             print('Thank U For Using E Bank')
             return False
             break;
-        else:
-            print('Plz choose any no. from 1 : 6')
 def Bank_creation(name):
     balance=float(input(f"{name.title()} ,how much money U have?\n= "))
     return balance
