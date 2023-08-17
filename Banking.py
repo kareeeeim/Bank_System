@@ -14,20 +14,20 @@ class Bank(User):
     def show_Info(self):
         return f" dear {self.Fname}\nyour age is :{self.age}\nyour Address is :{self.address}\nyour phone is :{self.phone}\nyour balance =E {round(self.balance,2)}"
     def deposit(self):
-        dp=float(input(f"{self.name.title()},Plz enter How much would u like to Deposit = " ))  
+        dp=float(input(f"{self.Fname.title()},Plz enter How much would u like to Deposit = " ))  
         print('Thank U for depositing....')
         self.balance+=dp
         self.total_deposit+=1
         return f"Your balance now is = {round(self.balance,2)}"
     def withdraws(self):
-        wd=float(input(f"{self.name.title()},Plz enter How much would u like to Withdraw = " ))
+        wd=float(input(f"{self.Fname.title()},Plz enter How much would u like to Withdraw = " ))
         if wd>self.balance:
             print("U can't Withdraw that amount")
         else :
             print('Thank U for Withdrawing')
             self.balance-=wd
             self.total_withdraws+=1 
-            return f"{self.name.title()}, your balance now = {round(self.balance,2)}"
+            return f"{self.Fname.title()}, your balance now = {round(self.balance,2)}"
 def Options(User_2):    
     while True:
         opt_choice=int(input('\nChoice Your Operation\n1- See Balance\n2- Withdraw\n3- Deposit\n4- Total Withdraw\n5- Total Deposit\n6- Quit\n:'))
@@ -36,12 +36,12 @@ def Options(User_2):
            if opt_choice==1 and User_2 !=None:
             print(user_1_bank.show_Info())
         elif opt_choice==2:
-            ww=input(f'{User_1.name} would U like to Withdraw (Yes - No)\n: ')
+            ww=input(f'{User_1.Fname} would U like to Withdraw (Yes - No)\n: ')
             if ww.lower() == 'Yes' :
                 print(user_1_bank.withdraws()) 
             if ww.lower()=='No':print(Options(User_2));        
         elif opt_choice ==3:
-            dd=input(f'{User_1.name} would U like to Deposit (Yes - No)\n:' )
+            dd=input(f'{User_1.Fname} would U like to Deposit (Yes - No)\n:' )
             if dd.lower()=='Yes':
                     print(user_1_bank.deposit())
             if dd.lower()=='No':
