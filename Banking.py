@@ -36,16 +36,18 @@ def Options(User_2):
            if opt_choice==1 and User_2 !=None:
             print(user_1_bank.show_Info())
         elif opt_choice==2:
-            ww=input(f'{User_1.Fname} would U like to Withdraw (Yes - No)\n: ')
-            if ww.lower() == 'Yes' :
-                print(user_1_bank.withdraws()) 
-            if ww.lower()=='No':print(Options(User_2));        
+            print(user_1_bank.withdraws())
+            ww=input(f'{User_1.Fname} Your operation is done (Yes - No)\n: ')
+            if ww.lower() == 'Yes':
+                print(Options(User_2))     
+            if ww.lower()=='No':print(user_1_bank.withdraws())        
         elif opt_choice ==3:
-            dd=input(f'{User_1.Fname} would U like to Deposit (Yes - No)\n:' )
+            print(user_1_bank.deposit())
+            dd=input(f'{User_1.Fname} Your operation is done (Yes - No)\n:' )
             if dd.lower()=='Yes':
-                    print(user_1_bank.deposit())
+                  print(Options(User_2))       
             if dd.lower()=='No':
-                    print(Options(User_2))        
+                    print(user_1_bank.deposit())        
         elif opt_choice==4:
             if opt_choice==4 and User_2 !=None:
                  print(f"There Have been {user_1_bank.total_withdraws} Withdraws")
